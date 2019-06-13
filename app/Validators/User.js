@@ -3,19 +3,20 @@
 const Antl = use('Antl')
 
 class User {
-  get validateAll () {
+  get validateAll() {
     return true
   }
 
-  get rules () {
+  get rules() {
     return {
       username: 'required|unique:users',
       email: 'required|email|unique:users',
-      password: 'required|confirmed'
+      password: 'required|confirmed',
+      type: 'required'
     }
   }
 
-  get messages () {
+  get messages() {
     return Antl.list('validation')
   }
 }
