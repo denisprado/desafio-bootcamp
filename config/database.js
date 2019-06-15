@@ -75,7 +75,7 @@ module.exports = {
   pg: {
     client: 'pg',
     connection:
-    'postgres://yqwosocq:JaqRGgUHkZqcWCI1p2QOMnYgg1MBwdiT@raja.db.elephantsql.com:5432/yqwosocq',
+      'postgres://yqwosocq:JaqRGgUHkZqcWCI1p2QOMnYgg1MBwdiT@raja.db.elephantsql.com:5432/yqwosocq',
     debug: Env.get('DB_DEBUG', false)
   }
 }

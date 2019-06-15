@@ -1,18 +1,24 @@
 'use strict'
 
 const User = use('App/Models/User')
+const Database = use('Database')
 
 class UserController {
-  async index() {
-    const user = await User.all()
+  async index () {
+    const users = await User.all()
 
-    return user
+    return users
   }
 
-  async store({ request }) {
+  async store ({ request }) {
     const data = request.only(['username', 'email', 'password'])
+    const adresses = request.input('adresses')
 
-    const user = await User.create(data)
+    const trx = await Database.beginTransaction()
+
+    const user = await User.create(data, trx)
+    await user.adresses().createMany(adresses, trx)
+    await trx.commit()
 
     return user
   }

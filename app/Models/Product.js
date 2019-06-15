@@ -4,14 +4,9 @@
 const Model = use('Model')
 
 class Product extends Model {
-
-    topping() {
-        return this.hasOne('App/Models/Topping')
-    }
-
-    size() {
-        return this.hasOne('App/Models/Size')
-    }
+  toppings () {
+    return this.hasMany('App/Models/Topping')
+  }
 }
 
 module.exports = Product
