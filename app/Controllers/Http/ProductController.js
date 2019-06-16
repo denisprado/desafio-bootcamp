@@ -21,7 +21,9 @@ class ProductController {
    */
   async index ({ request }) {
     const { page } = request.get()
-    const product = await Product.query().paginate(page)
+    const product = await Product.query()
+      .with('toppings.sizes')
+      .paginate(page)
 
     return product
   }

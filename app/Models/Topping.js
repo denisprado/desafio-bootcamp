@@ -11,6 +11,10 @@ class Topping extends Model {
   file () {
     return this.belongsTo('App/Models/File')
   }
+
+  sizes () {
+    return this.hasMany('App/Models/Size')
+  }
 }
 
 module.exports = Topping

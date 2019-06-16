@@ -1,6 +1,7 @@
 'use strict'
 
 const Topping = use('App/Models/Topping')
+const Size = use('App/Models/Size')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -22,6 +23,7 @@ class ToppingController {
   async index ({ params }) {
     const toppings = await Topping.query()
       .where('product_id', params.products_id)
+      .with('sizes')
       .fetch()
 
     return toppings
